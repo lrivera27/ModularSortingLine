@@ -35,7 +35,7 @@ class ArduinoCommunicator:
         # print(inputArduino)
 
 
-ports = ArduinoCommunicator.findArduinoComms()
-
-arr1 = ArduinoCommunicator(ports[0], 115200)
-arr2 = ArduinoCommunicator(ports[1], 115200)
+# ports = ArduinoCommunicator.findArduinoComms()
+#
+# arr1 = ArduinoCommunicator(ports[0], 115200)
+# arr2 = ArduinoCommunicator(ports[1], 115200)
