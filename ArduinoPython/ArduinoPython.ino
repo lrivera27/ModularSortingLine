@@ -8,9 +8,8 @@
 
 #include <Servo.h>
 
+// Initialization of the servo object
 Servo servo;
-
-bool connectionStablished = false;
 
 // Command Protocol message
 String message = "";
@@ -37,19 +36,34 @@ void loop() {
 
   //Check if there's a connection
   if (Serial.available() > 0) {
+
+    // Read from the serial until the end of the line (or until '\n')
     message = Serial.readStringUntil('\n');
 
     decodeMessage();
 
+    // Digital write mode
     if (mode == 1) {
-      Serial.println("TURNING ON LED");
+
       pinMode(pin, OUTPUT);
       digitalWrite(pin, pinValue);
     }
 
-    else {
+    // Servo mode (PWM)
+    else if (mode == 2){
+
       servo.attach(pin);
       servo.write(pinValue);
+    }
+
+    // Analog Mode (Input)
+    else{
+
+      int analogOutput = 0;
+      pinMode(pin, INPUT);
+      analogOutput = analogRead(pin);
+
+      Serial.println(analogOutput);
     }
   }
 }
@@ -60,27 +74,23 @@ void loop() {
                - Pin  : Pin of the commponent.
  			         - Value: High or Low.
 */
-
 void decodeMessage() {
 
   Serial.print("Mode: ");
   if (message.substring(0, 1) == "D") {
 
-    // Mode
+    // Digital write mode
     mode = 1;
     Serial.println("DIGITAL");
-  } else if (message.substring(0, 1) == "C") {
+  } else if(message.substring(0, 1) == "P") {
 
-    // Mode
-    connectionStablished = true;
+    // Servo mode (PWM)
     mode = 2;
-    Serial.println("CONNECTED");
+    Serial.println("PWM SERVO");
+  } else if(message.substring(0, 1) == "A") {
 
-    return;
-  } else {
-
-    // Mode
-    mode = 0;
+    // Analog Mode (Input)
+    mode = 3;
     Serial.println("ANALOG");
   }
 
@@ -94,5 +104,3 @@ void decodeMessage() {
   Serial.print("Value: ");
   Serial.println(pinValue);
 }
-
-
