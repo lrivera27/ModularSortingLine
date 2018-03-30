@@ -1,14 +1,15 @@
-function addToHtml() {
-  alert("Adding HTML");
+let arduinos = [];
 
-  var arduinos = ["Arduino Uno", "Arduino Mega"];
+async function addToHtml() {
 
-  arduinos.forEach(function(arduino) {
-    console.log(arduino);
+  arduinos = await eel.checkPorts()();
 
-    var html = "<div class='flex-item'>" + arduino + "</div>"
-
-    $('#arduinoList').append(html);
-
-  });
+  if (arduinos.length != 0) {
+    for(let arduino of arduinos) {
+      let arduinoName = await eel.typeOfPort(arduino)();
+      console.log(arduinoName);
+      var html = "<div class='flex-item'>" + arduinoName + "</div>";
+      $('#arduinoList').append(html);
+    }
+  }
 };

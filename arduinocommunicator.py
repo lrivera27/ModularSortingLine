@@ -7,6 +7,8 @@ class ArduinoCommunicator:
     s = None
     port = None
     baudrate = None
+    arduinoType = None
+
     def __init__(self, port, baudrate):
         self.port = port
         self.baudrate = baudrate
@@ -26,16 +28,10 @@ class ArduinoCommunicator:
 
     def write(self, command):
         self.s.write(command.encode('ascii'))
-        # inputArduino = self.s.read()
-        # time.sleep(1)
-        # data_left = s.inWaiting()
-        #
-        # inputArduino += s.read(data_left)
-        #
-        # print(inputArduino)
+        inputArduino = self.s.read()
+        time.sleep(0.3)
+        data_left = self.s.inWaiting()
 
+        inputArduino += self.s.read(data_left)
 
-# ports = ArduinoCommunicator.findArduinoComms()
-#
-# arr1 = ArduinoCommunicator(ports[0], 115200)
-# arr2 = ArduinoCommunicator(ports[1], 115200)
+        print(inputArduino)
