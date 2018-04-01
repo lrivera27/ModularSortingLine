@@ -1,22 +1,47 @@
 html, body {
-    height: 100%;
+  background-color: #212121;
+  height: 100%;
 }
 body {
-    margin: 0;
+  margin: 0;
 }
 .flex-container {
-    height: 100%;
-    padding: 0;
-    margin: 0;
+  height: 100%;
+  padding: 0;
+  margin: 0;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .row {
-    width: auto;
+  width: auto;
 }
 .flex-item {
-    text-align: center;
-    margin: 20px 0px 20px 0px;
+  text-align: center;
+  margin: 20px 0px 20px 0px;
+}
+
+.module-container {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#moduleAddSquare {
+  margin-left: 20px;
+  margin-top: 5px;
+}
+
+#module {
+  background-color: #EEEEEE;
+  padding: 20px;
+}
+
+.component-label {
+  margin-top: 3px;
 }
