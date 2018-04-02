@@ -7,6 +7,9 @@ html(lang='en', dir='ltr')
     
     // CDN Libraries
     
+    // Jquery
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+    
     // Bootstrap CSS
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm', crossorigin='anonymous')
     
@@ -17,11 +20,6 @@ html(lang='en', dir='ltr')
     
     // Font Awesome 
     script(defer='', src='https://use.fontawesome.com/releases/v5.0.9/js/all.js', integrity='sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl', crossorigin='anonymous')
-
-    //
-    
-    // Jquery
-    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
     // 
     
     // Let browser know website is optimized for mobile
@@ -50,8 +48,8 @@ html(lang='en', dir='ltr')
             br
             P Side module: This module is any other extra module, this only has two servos.
           .modal-footer
-            button.btn.btn-primary#mainModuleButton(type='button') Main Module
-            button.btn.btn-warning#sideModuleButton(type='button') Side Module
+            button.btn.btn-primary#mainModuleButton(type='button', data-dismiss="modal") Main Module
+            button.btn.btn-warning#sideModuleButton(type='button', data-dismiss="modal") Side Module
             button.btn.btn-danger(type='button', data-dismiss='modal') Close
 
     
@@ -62,127 +60,6 @@ html(lang='en', dir='ltr')
             .col-md-auto
               h1.display-3.text-light Modules
             .col-md-auto
-              i(data-toggle="modal" data-target="#moduleModal").fas.fa-plus.fa-2x#modulePlus.text-white
-        
-      #module
-        .row#moduleTile
-          .col-12#moduleType
-            h4.text-center Main Module
-            hr
-            
-        .row
-          .col-6#moduleIRs
-            .row.justify-content-md-center
-              .col-md-auto
-                h5.text-center.component-label.component-label IR 1
-              .col-md-auto
-                select.custom-select
-                  option(selected) Arduino
-                  option(value="1") Mega (COM4)
-                  option(value="2") UNO (COM5)
-              .col-md-auto
-                input(type="text" placeholder="Arduino Pin").form-control.text-center
-            
-            br
-            .row.justify-content-md-center
-              .col-md-auto
-                h5.text-center.component-label IR 2
-              .col-md-auto
-                select.custom-select
-                  option(selected) Arduino
-                  option(value="1") Mega (COM4)
-                  option(value="2") UNO (COM5)
-              .col-md-auto
-                input(type="text" placeholder="Arduino Pin").form-control.text-center
-                
-          .col-6#moduleServos
-            .row.justify-content-md-center
-              .col-md-auto
-                h5.text-center.component-label SERVO 1
-              .col-md-auto
-                select.custom-select
-                  option(selected) Arduino
-                  option(value="1") Mega (COM4)
-                  option(value="2") UNO (COM5)
-
-              .col-md-auto
-                input(type="text" placeholder="Arduino Pin").form-control.text-center
-                
-            br    
-            .row.justify-content-md-center
-              .col-md-auto
-                h5.text-center.component-label SERVO 2
-              .col-md-auto
-                select.custom-select
-                  option(selected) Arduino
-                  option(value="1") Mega (COM4)
-                  option(value="2") UNO (COM5)
-              .col-md-auto
-                input(type="text" placeholder="Arduino Pin").form-control.text-center
-            br    
-            .row.justify-content-md-center
-              .col-md-auto
-                h5.text-center.component-label SERVO 3
-              .col-md-auto
-                select.custom-select
-                  option(selected) Arduino
-                  option(value="1") Mega (COM4)
-                  option(value="2") UNO (COM5)
-              .col-md-auto
-                input(type="text" placeholder="Arduino Pin").form-control.text-center
-                
-                
-      br        
-      #module
-        .row#moduleTile
-          .col-12#moduleType
-            h4.text-center Regular Module
-            hr
-            
-        .row
-          .col-6#moduleIRs
-            .row.justify-content-md-center
-              .col-md-auto
-                h5.text-center.component-label IR 1
-              .col-md-auto
-                select.custom-select
-                  option(selected) Arduino
-                  option(value="1") Mega (COM4)
-                  option(value="2") UNO (COM5)
-              .col-md-auto
-                input(type="text" placeholder="Arduino Pin").form-control.text-center
-            br
-            .row.justify-content-md-center
-              .col-md-auto
-                h5.text-center.component-label IR 2
-              .col-md-auto
-                select.custom-select
-                  option(selected) Arduino
-                  option(value="1") Mega (COM4)
-                  option(value="2") UNO (COM5)
-              .col-md-auto
-                input(type="text" placeholder="Arduino Pin").form-control.text-center
-                
-          .col-6#moduleServos
-            .row.justify-content-md-center
-              .col-md-auto
-                h5.text-center.component-label SERVO 1
-              .col-md-auto
-                select.custom-select
-                  option(selected) Arduino
-                  option(value="1") Mega (COM4)
-                  option(value="2") UNO (COM5)
-              .col-md-auto
-                input(type="text" placeholder="Arduino Pin").form-control.text-center
-                
-            br  
-            .row.justify-content-md-center
-              .col-md-auto
-                h5.text-center.component-label SERVO 2
-              .col-md-auto
-                select.custom-select
-                  option(selected) Arduino
-                  option(value="1") Mega (COM4)
-                  option(value="2") UNO (COM5)
-              .col-md-auto
-                input(type="text" placeholder="Arduino Pin").form-control.text-center
+              #modulePlus(data-toggle="modal" data-target="#moduleModal")
+                i.fas.fa-plus.fa-2x.text-white
+      #modules
