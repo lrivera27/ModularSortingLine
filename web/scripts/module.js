@@ -44,6 +44,12 @@ async function createMainModule() {
   console.log("Creating Main Module!");
 
   let arduinos = await getAllArduinoNames();
+  let selectMenu = "";
+
+  $.each(arduinos, function(key, value) {
+
+    selectMenu += '<option value="' + key + '">' + value + '</option>';
+  });
 
   if(arduinos) {
 
@@ -63,9 +69,7 @@ async function createMainModule() {
     '                </div>'+
     '                <div class="col-md-auto">'+
     '                  <select class="custom-select">'+
-    '                    <option selected>Arduino</option>'+
-    '                    <option value="1">Mega (COM4)</option>'+
-    '                    <option value="2">UNO (COM5)</option>'+
+    '                    <option selected>Arduino</option>'+ selectMenu +
     '                  </select>'+
     '                </div>'+
     '                <div class="col-md-auto">'+
@@ -78,9 +82,7 @@ async function createMainModule() {
     '                </div>'+
     '                <div class="col-md-auto">'+
     '                  <select class="custom-select">'+
-    '                    <option selected>Arduino</option>'+
-    '                    <option value="1">Mega (COM4)</option>'+
-    '                    <option value="2">UNO (COM5)</option>'+
+    '                    <option selected>Arduino</option>'+ selectMenu +
     '                  </select>'+
     '                </div>'+
     '                <div class="col-md-auto">'+
@@ -95,9 +97,7 @@ async function createMainModule() {
     '                </div>'+
     '                <div class="col-md-auto">'+
     '                  <select class="custom-select">'+
-    '                    <option selected>Arduino</option>'+
-    '                    <option value="1">Mega (COM4)</option>'+
-    '                    <option value="2">UNO (COM5)</option>'+
+    '                    <option selected>Arduino</option>'+ selectMenu +
     '                  </select>'+
     '                </div>'+
     '                <div class="col-md-auto">'+
@@ -110,9 +110,7 @@ async function createMainModule() {
     '                </div>'+
     '                <div class="col-md-auto">'+
     '                  <select class="custom-select">'+
-    '                    <option selected>Arduino</option>'+
-    '                    <option value="1">Mega (COM4)</option>'+
-    '                    <option value="2">UNO (COM5)</option>'+
+    '                    <option selected>Arduino</option>'+ selectMenu +
     '                  </select>'+
     '                </div>'+
     '                <div class="col-md-auto">'+
@@ -125,9 +123,7 @@ async function createMainModule() {
     '                </div>'+
     '                <div class="col-md-auto">'+
     '                  <select class="custom-select">'+
-    '                    <option selected>Arduino</option>'+
-    '                    <option value="1">Mega (COM4)</option>'+
-    '                    <option value="2">UNO (COM5)</option>'+
+    '                    <option selected>Arduino</option>'+ selectMenu +
     '                  </select>'+
     '                </div>'+
     '                <div class="col-md-auto">'+
@@ -146,8 +142,13 @@ async function createSideModule() {
   console.log("Creating Side Module");
 
   let arduinos = await getAllArduinoNames();
-
+  let selectMenu = "";
   if(arduinos) {
+
+    $.each(arduinos, function(key, value) {
+
+      selectMenu += '<option value="' + key + '">' + value + '</option>';
+    });
 
     var html = '<br>'+
     '         <div id="module">'+
@@ -165,9 +166,7 @@ async function createSideModule() {
     '                </div>'+
     '                <div class="col-md-auto">'+
     '                  <select class="custom-select">'+
-    '                    <option selected>Arduino</option>'+
-    '                    <option value="1">Mega (COM4)</option>'+
-    '                    <option value="2">UNO (COM5)</option>'+
+    '                    <option selected>Arduino</option>'+ selectMenu +
     '                  </select>'+
     '                </div>'+
     '                <div class="col-md-auto">'+
@@ -180,9 +179,7 @@ async function createSideModule() {
     '                </div>'+
     '                <div class="col-md-auto">'+
     '                  <select class="custom-select">'+
-    '                    <option selected>Arduino</option>'+
-    '                    <option value="1">Mega (COM4)</option>'+
-    '                    <option value="2">UNO (COM5)</option>'+
+    '                    <option selected>Arduino</option>'+ selectMenu +
     '                  </select>'+
     '                </div>'+
     '                <div class="col-md-auto">'+
@@ -197,9 +194,7 @@ async function createSideModule() {
     '                </div>'+
     '                <div class="col-md-auto">'+
     '                  <select class="custom-select">'+
-    '                    <option selected>Arduino</option>'+
-    '                    <option value="1">Mega (COM4)</option>'+
-    '                    <option value="2">UNO (COM5)</option>'+
+    '                    <option selected>Arduino</option>'+ selectMenu +
     '                  </select>'+
     '                </div>'+
     '                <div class="col-md-auto">'+
@@ -212,9 +207,7 @@ async function createSideModule() {
     '                </div>'+
     '                <div class="col-md-auto">'+
     '                  <select class="custom-select">'+
-    '                    <option selected>Arduino</option>'+
-    '                    <option value="1">Mega (COM4)</option>'+
-    '                    <option value="2">UNO (COM5)</option>'+
+    '                    <option selected>Arduino</option>'+ selectMenu +
     '                  </select>'+
     '                </div>'+
     '                <div class="col-md-auto">'+
