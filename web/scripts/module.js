@@ -1,6 +1,3 @@
-var elem = document.querySelector('select');
-var instance = M.FormSelect.init(elem, options);
-
 async function getAllArduinoNames() {
 
   let arduinoPorts = await eel.checkPorts()();
@@ -20,3 +17,21 @@ async function getAllArduinoNames() {
 async function createModule() {
   console.log("Creating Module!");
 };
+
+
+$('#modulePlus').click(function() {
+  createModule();
+});
+
+$('#moduleModal .modal-footer button').on('click', function(event) {
+  var $button = $(event.target);
+
+  $(this).closest('.modal').one('hidden.bs.modal', function() {
+    alert($button[0].id);
+  });
+});
+
+$('#moduleModal').on('click', '#sideModuleButton', function() {
+  alert("Side Module selected!");
+  $('moduleModal').modal('hide');
+});
