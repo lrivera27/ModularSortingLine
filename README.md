@@ -10,12 +10,16 @@ These instructions will get you a copy of the project up and running on your loc
 
 What things you need to install the software and how to install them
 
-1. You will be needing pyserial for the communication between python and arduino.
+1. This projects uses Python 3.6, you can either download it from [their website](https://www.python.org/) or by downloading the [anaconda bundle](https://anaconda.org/) (recommended).
+
+2. You need to install OpenCV, since this varies from Operating System to Operating System, we will not be including a guide on how to install it.
+
+2. You will be needing pyserial for the communication between python and arduino.
 	```
 	pip install pyserial
 	```
     
-2. For the GUI, the software uses a small library called eel, which can be installed by running:
+3. For the GUI, the software uses a small library called eel, which can be installed by running:
 
 	```
     pip install eel
@@ -65,23 +69,18 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [Python 3.6](https://www.python.org/downloads/) - Core back-end language used.
+* [Eel](https://github.com/ChrisKnott/Eel) - A little Python library for making simple Electron-like HTML/JS GUI apps
+* [OpenCV](https://opencv.org) - (Open Source Computer Vision Library) is an open source computer vision and machine learning software library. 
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+Pull request will be accepted and will be heavily reviewed before mergin.
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* **Luis E. Rivera Figueroa** - *Lead Software Developer* - [LRivera27](https://github.com/lrivera27)
+* **David Miranda Rosario** - *Software Developer* - [DavidMirandaPR](https://github.com/davidmirandapr)
 
 ## License
 
