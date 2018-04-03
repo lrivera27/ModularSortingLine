@@ -1,4 +1,8 @@
+var mainModuleCounter = 0;
+var sideModuleCounter = 0;
+
 async function getAllArduinoNames() {
+  console.log("Loading Arduino names....");
 
   let arduinoPorts = await eel.checkPorts()();
   let arduinos = {};
@@ -19,14 +23,6 @@ async function getAllArduinoNames() {
   return null;
 };
 
-$('#moduleModal .modal-footer button').on('click', function(event) {
-  var $button = $(event.target);
-
-  $(this).closest('.modal').one('hidden.bs.modal', function() {
-    alert($button[0].id);
-  });
-});
-
 
 
 $(document).ready(function() {
@@ -38,10 +34,21 @@ $(document).ready(function() {
   $('#sideModuleButton').click(async function() {
     createSideModule();
   });
+
+  $('#moduleSave').click(function () {
+    saveModule();
+  });
 });
 
+
+function saveModule() {
+  console.log("Saving modules...");
+
+
+}
+
 async function createMainModule() {
-  console.log("Creating Main Module!");
+  console.log("Creating Main Module....");
 
   let arduinos = await getAllArduinoNames();
   let selectMenu = "";
@@ -52,12 +59,12 @@ async function createMainModule() {
   });
 
   if(arduinos) {
-
+    mainModuleCounter += 1;
     var html ='<br>'+
     '         <div id="module">'+
     '          <div class="row" id="moduleTile">'+
     '            <div class="col-12" id="moduleType">'+
-    '              <h4 class="text-center">Main Module</h4>'+
+    '              <h4 class="text-center">Main Module ' + mainModuleCounter + '</h4>'+
     '              <hr>'+
     '            </div>'+
     '          </div>'+
@@ -145,6 +152,8 @@ async function createSideModule() {
   let selectMenu = "";
   if(arduinos) {
 
+    sideModuleCounter += 1;
+
     $.each(arduinos, function(key, value) {
 
       selectMenu += '<option value="' + key + '">' + value + '</option>';
@@ -154,7 +163,7 @@ async function createSideModule() {
     '         <div id="module">'+
     '          <div class="row" id="moduleTile">'+
     '            <div class="col-12" id="moduleType">'+
-    '              <h4 class="text-center">Regular Module</h4>'+
+    '              <h4 class="text-center">Side Module ' + sideModuleCounter + '</h4>'+
     '              <hr>'+
     '            </div>'+
     '          </div>'+

@@ -46,6 +46,7 @@ body {
   margin-top: 3px;
 }
 
-#modulePlus {
+#modulePlus,
+#moduleSave {
   margin-top: 35px;
 }
