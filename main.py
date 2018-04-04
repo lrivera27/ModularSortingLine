@@ -11,8 +11,10 @@ def loadArduinos():
     global arduinos
 
     ports = checkPorts()
-    for port in ports:
-        arduinos.append(AC.ArduinoCommunicator(port, 115200))
+    if(ports != -1):
+        for port in ports:
+                arduinos.append(AC.ArduinoCommunicator(port, 115200))
+
 
 @eel.expose
 def sendCommand(port, command):

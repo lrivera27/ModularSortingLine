@@ -1,0 +1,12 @@
+{
+    "Accounts" : [
+        {
+            "username":"capstone",
+            "password":"capstone"
+        },
+        {
+            "username":"capstone1", 
+            "password":"capstone1"
+        }
+    ]
+}

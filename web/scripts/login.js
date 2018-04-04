@@ -1,9 +1,10 @@
 
 function Login() {
-  var email = $("#email").val();
+  console.log("Logging In");
+  var username = $("#username").val();
   var password = $("#password").val();
 
-  if(email == "capstone@inter.edu" && password == "capstone"){
-    window.location.href = '/index.html'; //relative to domain
+  if(username == "capstone" && password == "capstone"){
+    window.location="/index.html";
   }
 };
