@@ -11,8 +11,10 @@ def loadArduinos():
     global arduinos
 
     ports = checkPorts()
-    for port in ports:
-        arduinos.append(AC.ArduinoCommunicator(port, 115200))
+    if(ports != -1):
+        for port in ports:
+                arduinos.append(AC.ArduinoCommunicator(port, 115200))
+
 
 @eel.expose
 def sendCommand(port, command):
@@ -55,7 +57,7 @@ def main():
 
     eel.init("web")
     print("Starting up GUI....")
-    eel.start("index.html", size=(1280, 720))
+    eel.start("login.html", size=(1280, 720))
 
 
 if __name__ == "__main__":
