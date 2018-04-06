@@ -210,19 +210,6 @@ async function createSideModule() {
     '                  <input class="form-control text-center" type="text" placeholder="Arduino Pin">'+
     '                </div>'+
     '              </div><br>'+
-    '              <div class="row justify-content-md-center">'+
-    '                <div class="col-md-auto">'+
-    '                  <h5 class="text-center component-label">SERVO 2</h5>'+
-    '                </div>'+
-    '                <div class="col-md-auto">'+
-    '                  <select class="custom-select">'+
-    '                    <option selected>Arduino</option>'+ selectMenu +
-    '                  </select>'+
-    '                </div>'+
-    '                <div class="col-md-auto">'+
-    '                  <input class="form-control text-center" type="text" placeholder="Arduino Pin">'+
-    '                </div>'+
-    '              </div>'+
     '            </div>'+
     '          </div>'+
     '        </div>';
