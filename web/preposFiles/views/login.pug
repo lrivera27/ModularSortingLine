@@ -24,30 +24,26 @@ html(lang='en', dir='ltr')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     
     // Local CSS
-    link(rel='stylesheet', href='css/login.css')
+    link(rel='stylesheet', href='css/index.css')
     
     // Local Scripts
     script(src='scripts/login.js')
-    h1.col-sm-12.text-center Modular Sorting Line Software
     title Login
   body 
   .container.py-5
     .row
       .col-md-12
-        h2.text-center.text-white.mb-4 Bootstrap 4 Login Form
-        .row
+      h1.col-sm-12.text-center.text-secondary Modular Sorting Line Software
+        .row.py-5
           .col-md-6.mx-auto
             // form card login
             .card.rounded-0
               .card-header
-                h3.mb-0 Login
-              .card-body
-                  .form-group
-                    label(for='username') Username
+                h1.mb-0 Login
+                  h4.form-group.text-left Username
                     input#username.form-control.form-control-lg.rounded-0(type='text', value='capstone')
                     .invalid-feedback
-                  .form-group
-                    label Password
+                  h4.form-group.text-left Password
                     input#password.form-control.form-control-lg.rounded-0(type='password', value='capstone') 
                     .invalid-feedback
                   div
