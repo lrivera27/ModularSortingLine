@@ -50,14 +50,24 @@ void loop() {
     }
 
     // Servo mode (PWM)
-    else if (mode == 2){
+    else if (mode == 2) {
 
       servo.attach(pin);
       servo.write(pinValue);
     }
 
+    else if (mode == 3) {
+      int digitalOutput = 0;
+      pinMode(pin, INPUT);
+      digitalOutput = digitalRead(pin);
+      
+      if(!digitalOutput) {
+        Serial.println("OBSTACLE");
+      }
+    }
+
     // Analog Mode (Input)
-    else{
+    else if (mode == 4) {
 
       int analogOutput = 0;
       pinMode(pin, INPUT);
@@ -76,31 +86,38 @@ void loop() {
 */
 void decodeMessage() {
 
-  Serial.print("Mode: ");
+  //Serial.print("Mode: ");
   if (message.substring(0, 1) == "D") {
 
     // Digital write mode
     mode = 1;
-    Serial.println("DIGITAL");
+    //Serial.println("DIGITAL");
   } else if(message.substring(0, 1) == "P") {
 
     // Servo mode (PWM)
     mode = 2;
-    Serial.println("PWM SERVO");
+    //Serial.println("PWM SERVO");
+  } else if(message.substring(0, 1) == "R") {
+
+    // Digital Read mode
+    mode = 3;
+    //Serial.println("DIGITAL READ");
   } else if(message.substring(0, 1) == "A") {
 
     // Analog Mode (Input)
-    mode = 3;
-    Serial.println("ANALOG");
+    mode = 4;
+    //Serial.println("ANALOG");
   }
 
   // Pin
   pin = (message.substring(1, 3)).toInt();
-  Serial.print("Pin: ");
-  Serial.println(pin);
+  //Serial.print("Pin: ");
+  //Serial.println(pin);
 
   // Value
   pinValue = (message.substring(3)).toInt();
-  Serial.print("Value: ");
-  Serial.println(pinValue);
+  //Serial.print("Value: ");
+  //Serial.println(pinValue);
+
+  Serial.print("-");
 }

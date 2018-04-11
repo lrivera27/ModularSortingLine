@@ -12,7 +12,7 @@ class ArduinoCommunicator:
     def __init__(self, port, baudrate):
         self.port = port
         self.baudrate = baudrate
-        self.s = serial.Serial(port, baudrate, timeout=1)
+        self.s = serial.Serial(port, baudrate, timeout=0.01)
         time.sleep(2)
 
     @staticmethod
@@ -29,7 +29,7 @@ class ArduinoCommunicator:
     def write(self, command):
         self.s.write(command.encode('ascii'))
         inputArduino = self.s.read()
-        time.sleep(0.3)
+
         data_left = self.s.inWaiting()
 
         inputArduino += self.s.read(data_left)
