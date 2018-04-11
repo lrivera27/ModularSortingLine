@@ -34,4 +34,52 @@ class ArduinoCommunicator:
 
         inputArduino += self.s.read(data_left)
 
-        print(inputArduino)
+        return inputArduino
+
+def mainModule():
+
+    arr1 = ArduinoCommunicator("COM6", 115200)
+
+    message = ""
+
+    while(True):
+
+        message = str(arr1.write("R07\n"))
+
+        if "OBSTACLE" in message:
+            arr1.write("D131\n")
+
+        else:
+            arr1.write("D130\n")
+
+
+command = ["SQUARE", "CILINDER", "SQUARE", "CILINDER", "SQUARE", "CILINDER", "SQUARE", "CILINDER", "SQUARE", "CILINDER", "SQUARE", "CILINDER"]
+
+
+def mainModule():
+    arr1 = ArduinoCommunicator("COM6", 115200)
+    arr2 = ArduinoCommunicator("COM4", 115200)
+
+    message = ""
+
+    while True:
+
+        message = str(arr1.write("R07\n"))
+
+        if "OBSTACLE" in message:
+
+            if(len(command)):
+
+                if command[0] == "SQUARE":
+                    command.pop(0)
+                    arr1.write("D131\n")
+                    arr2.write("D130\n")
+
+                elif command[0] == "CILINDER":
+                    command.pop(0)
+                    arr2.write("D131\n")
+                    arr1.write("D130\n")
+
+                time.sleep(1)
+
+mainModule()
