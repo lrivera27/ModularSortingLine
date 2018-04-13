@@ -1,12 +1,31 @@
+
 var mainModuleCounter = 0;
 var sideModuleCounter = 0;
 
-// var mainModule = class {
-//   constructor(FirstIR, SecondIR) {
-//     this.FirstIR = FirstIR;
-//     this.SecondIR = SecondIR;
-//   }
-// };
+//Component Object
+function Component(Com, Pin) {
+    this.Com = Com;
+    this.Pin = Pin;
+};
+//Main Module Object
+function MainModule(moduleNum, IR1, IR2, S1, S2, S3) {
+    this.Type = "MainModule";
+    this.Number = moduleNum;
+    this.IR1 = new Component(IR1.Com, IR1.Pin);
+    this.IR2 = new Component(IR2.Com, IR2.Pin);
+    this.S1 = new Component(S1.Com, S1.Pin);
+    this.S2 = new Component(S2.Com, S2.Pin);
+    this.S3 = new Component(S3.Com, S3.Pin);
+};
+// SideModule Object
+function SideModule(moduleNum, IR1, IR2, S1) {
+    this.Type = "SideModule";
+    this.Number = moduleNum;
+    this.IR1 = new Component(IR1.Com, IR1.Pin);
+    this.IR2 = new Component(IR2.Com, IR2.Pin);
+    this.S1 = new Component(S1.Com, S1.Pin);
+};
+
 
 async function getAllArduinoNames() {
   console.log("Loading Arduino names....");
@@ -42,7 +61,7 @@ $(document).ready(function() {
     createSideModule();
   });
 
-  $('#moduleSave').click(function () {
+  $('#saveModuleBtn').click(function () {
     saveModule();
   });
 });
@@ -52,7 +71,8 @@ function saveModule() {
   var mainModulesAmount = $("div.mainModule").length;
   var sideModulesAmount = $("div.sideModule").length;
   var moduleCount = 0;
-
+  var existingModules = [];
+  var mainModulesJSONString = "";
   //If mainModulesExists
   if(mainModulesAmount > 0){
     //While I have not iterated over all existing main modules
@@ -60,13 +80,70 @@ function saveModule() {
       //if a module with this class exists
       if($("div.mainModule"+moduleCount).length != 0){
         //alert("MainModule #"+moduleCount+" Exists");
-
-
+        //Get IR1 Information
+        var comIR1 = $("div.mainModule"+moduleCount).find(".IR1ino option:selected").val();
+        var pinIR1 = $("div.mainModule"+moduleCount).find(".IR1PIN").val();
+        //Get IR2 Information
+        var comIR2 = $("div.mainModule"+moduleCount).find(".IR2ino option:selected").val();
+        var pinIR2 = $("div.mainModule"+moduleCount).find(".IR2PIN").val();
+        //Get Servo1 Information
+        var comS1 = $("div.mainModule"+moduleCount).find(".Servo1Com option:selected").val();
+        var pinS1 = $("div.mainModule"+moduleCount).find(".Servo1Pin").val();
+        //Get Servo2 Information
+        var comS2 = $("div.mainModule"+moduleCount).find(".Servo2Com option:selected").val();
+        var pinS2 = $("div.mainModule"+moduleCount).find(".Servo2Pin").val();
+        //Get Servo3 Information
+        var comS3 = $("div.mainModule"+moduleCount).find(".Servo3Com option:selected").val();
+        var pinS3 = $("div.mainModule"+moduleCount).find(".Servo3Pin").val();
+        //IR Components
+        var IR1Component = new Component(comIR1,pinIR1);
+        var IR2Component = new Component(comIR2,pinIR2);
+        //Servo Components
+        var Servo1Component = new Component(comS1,pinS1);
+        var Servo2Component = new Component(comS2,pinS2);
+        var Servo3Component = new Component(comS3,pinS3);
+        //Main Module
+        var thisMainModule = new MainModule(moduleCount,IR1Component,IR2Component,Servo1Component,Servo2Component,Servo3Component);
+        existingModules.push(thisMainModule);
         mainModulesAmount--;
       }
       moduleCount++;
     }
   }
+  //ModuleCount reset
+  moduleCount = 0;
+  //If sideModulesExists
+  if(sideModulesAmount > 0){
+    //While I have not iterated over all existing main modules
+    while(sideModulesAmount != 0){
+      //if a module with this class exists
+      if($("div.sideModule"+moduleCount).length != 0){
+        //alert("MainModule #"+moduleCount+" Exists");
+        //Get IR1 Information
+        var comIR1 = $("div.sideModule"+moduleCount).find(".IR1ino option:selected").val();
+        var pinIR1 = $("div.sideModule"+moduleCount).find(".IR1PIN").val();
+        //Get IR2 Information
+        var comIR2 = $("div.sideModule"+moduleCount).find(".IR2ino option:selected").val();
+        var pinIR2 = $("div.sideModule"+moduleCount).find(".IR2PIN").val();
+        //Get Servo1 Information
+        var comS1 = $("div.sideModule"+moduleCount).find(".Servo1Com option:selected").val();
+        var pinS1 = $("div.sideModule"+moduleCount).find(".Servo1Pin").val();
+        //IR Components
+        var IR1Component = new Component(comIR1,pinIR1);
+        var IR2Component = new Component(comIR2,pinIR2);
+        //Servo Components
+        var Servo1Component = new Component(comS1,pinS1);
+        //Side Module
+        var thisSideModule = new SideModule(moduleCount,IR1Component,IR2Component,Servo1Component);
+        existingModules.push(thisSideModule);
+        sideModulesAmount--;
+      }
+      moduleCount++;
+    }
+  }
+
+  existingModulesJSONString = JSON.stringify(existingModules);
+  window.open("data:application/txt," + encodeURIComponent(mainModulesJSONString), "_self");
 }
 
 function closeModule(clicked_id) {
@@ -83,8 +160,7 @@ async function createMainModule() {
   let selectMenu = "";
 
   $.each(arduinos, function(key, value) {
-
-    selectMenu += '<option value="' + key + '">' + value + '</option>';
+    selectMenu += '<option data-ino="' + value + '" value="' + key + '">' + value + '</option>';
   });
 
   if(arduinos) {
@@ -111,12 +187,12 @@ async function createMainModule() {
     '                  <h5 class="text-center component-label component-label">IR 1</h5>'+
     '                </div>'+
     '                <div class="col-md-auto">'+
-    '                  <select class="custom-select">'+
+    '                  <select class="custom-select IR1ino">'+
     '                    <option selected>Arduino</option>'+ selectMenu +
     '                  </select>'+
     '                </div>'+
     '                <div class="col-md-auto">'+
-    '                  <input class="form-control text-center" type="text" placeholder="Arduino Pin">'+
+    '                  <input class="form-control text-center IR1PIN" type="text" placeholder="Arduino Pin">'+
     '                </div>'+
     '              </div><br>'+
     '              <div class="row justify-content-md-center">'+
@@ -124,12 +200,12 @@ async function createMainModule() {
     '                  <h5 class="text-center component-label">IR 2</h5>'+
     '                </div>'+
     '                <div class="col-md-auto">'+
-    '                  <select class="custom-select">'+
+    '                  <select class="custom-select IR2ino">'+
     '                    <option selected>Arduino</option>'+ selectMenu +
     '                  </select>'+
     '                </div>'+
     '                <div class="col-md-auto">'+
-    '                  <input class="form-control text-center" type="text" placeholder="Arduino Pin">'+
+    '                  <input class="form-control text-center IR2PIN" type="text" placeholder="Arduino Pin">'+
     '                </div>'+
     '              </div>'+
     '            </div>'+
@@ -139,12 +215,12 @@ async function createMainModule() {
     '                  <h5 class="text-center component-label">SERVO 1</h5>'+
     '                </div>'+
     '                <div class="col-md-auto">'+
-    '                  <select class="custom-select">'+
+    '                  <select class="custom-select Servo1Com">'+
     '                    <option selected>Arduino</option>'+ selectMenu +
     '                  </select>'+
     '                </div>'+
     '                <div class="col-md-auto">'+
-    '                  <input class="form-control text-center" type="text" placeholder="Arduino Pin">'+
+    '                  <input class="form-control text-center Servo1Pin" type="text" placeholder="Arduino Pin">'+
     '                </div>'+
     '              </div><br>'+
     '              <div class="row justify-content-md-center">'+
@@ -152,12 +228,12 @@ async function createMainModule() {
     '                  <h5 class="text-center component-label">SERVO 2</h5>'+
     '                </div>'+
     '                <div class="col-md-auto">'+
-    '                  <select class="custom-select">'+
+    '                  <select class="custom-select Servo2Com">'+
     '                    <option selected>Arduino</option>'+ selectMenu +
     '                  </select>'+
     '                </div>'+
     '                <div class="col-md-auto">'+
-    '                  <input class="form-control text-center" type="text" placeholder="Arduino Pin">'+
+    '                  <input class="form-control text-center Servo2Pin" type="text" placeholder="Arduino Pin">'+
     '                </div>'+
     '              </div><br>'+
     '              <div class="row justify-content-md-center">'+
@@ -165,12 +241,12 @@ async function createMainModule() {
     '                  <h5 class="text-center component-label">SERVO 3</h5>'+
     '                </div>'+
     '                <div class="col-md-auto">'+
-    '                  <select class="custom-select">'+
+    '                  <select class="custom-select Servo3Com">'+
     '                    <option selected>Arduino</option>'+ selectMenu +
     '                  </select>'+
     '                </div>'+
     '                <div class="col-md-auto">'+
-    '                  <input class="form-control text-center" type="text" placeholder="Arduino Pin">'+
+    '                  <input class="form-control text-center Servo3Pin" type="text" placeholder="Arduino Pin">'+
     '                </div>'+
     '              </div>'+
     '            </div>'+
@@ -217,12 +293,12 @@ async function createSideModule() {
     '                  <h5 class="text-center component-label">IR 1</h5>'+
     '                </div>'+
     '                <div class="col-md-auto">'+
-    '                  <select class="custom-select">'+
+    '                  <select class="custom-select IR1ino">'+
     '                    <option selected>Arduino</option>'+ selectMenu +
     '                  </select>'+
     '                </div>'+
     '                <div class="col-md-auto">'+
-    '                  <input class="form-control text-center" type="text" placeholder="Arduino Pin">'+
+    '                  <input class="form-control text-center IR1PIN" type="text" placeholder="Arduino Pin">'+
     '                </div>'+
     '              </div><br>'+
     '              <div class="row justify-content-md-center">'+
@@ -230,12 +306,12 @@ async function createSideModule() {
     '                  <h5 class="text-center component-label">IR 2</h5>'+
     '                </div>'+
     '                <div class="col-md-auto">'+
-    '                  <select class="custom-select">'+
+    '                  <select class="custom-select IR2ino">'+
     '                    <option selected>Arduino</option>'+ selectMenu +
     '                  </select>'+
     '                </div>'+
     '                <div class="col-md-auto">'+
-    '                  <input class="form-control text-center" type="text" placeholder="Arduino Pin">'+
+    '                  <input class="form-control text-center IR2PIN" type="text" placeholder="Arduino Pin">'+
     '                </div>'+
     '              </div>'+
     '            </div>'+
@@ -245,12 +321,12 @@ async function createSideModule() {
     '                  <h5 class="text-center component-label">SERVO 1</h5>'+
     '                </div>'+
     '                <div class="col-md-auto">'+
-    '                  <select class="custom-select">'+
+    '                  <select class="custom-select Servo1Com">'+
     '                    <option selected>Arduino</option>'+ selectMenu +
     '                  </select>'+
     '                </div>'+
     '                <div class="col-md-auto">'+
-    '                  <input class="form-control text-center" type="text" placeholder="Arduino Pin">'+
+    '                  <input class="form-control text-center Servo1Pin" type="text" placeholder="Arduino Pin">'+
     '                </div>'+
     '              </div><br>'+
     '            </div>'+
