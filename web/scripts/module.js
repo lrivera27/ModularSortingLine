@@ -143,7 +143,7 @@ function saveModule() {
   }
 
   existingModulesJSONString = JSON.stringify(existingModules);
-  window.open("data:application/txt," + encodeURIComponent(mainModulesJSONString), "_self");
+  window.open("data:application/txt," + encodeURIComponent(existingModulesJSONString), "_self");
 }
 
 function closeModule(clicked_id) {
