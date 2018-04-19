@@ -62,9 +62,28 @@
         </div>
       </div>
     </div>
+    <div class="modal fade" id="openModuleModal" tabindex="-1" role="dialog" aria-labelledby="openModuleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header"> 
+            <h5 class="modal-title" id="openModuleModalLabel">Open Saved Modules Settings</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          </div>
+          <div class="modal-body"> 
+            <p>Open Module Settings</p><br>
+            <h3>Contents of the file:</h3>
+            <pre id="file-content"></pre>
+          </div>
+          <div class="modal-footer">
+            <input id="file-input" type="file">
+            <button class="btn btn-warning" id="cancelOpenModuleBtn" type="button" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="container">
       <div class="row">
-        <div class="col-6">
+        <div class="col-8">
           <div class="row">
             <div class="col-md-auto">
               <h1 class="display-3 text-light">Modules</h1>
@@ -74,6 +93,9 @@
             </div>
             <div class="col-md-auto">
               <div id="moduleSave" data-toggle="modal" data-target="#saveModuleModal"><i class="fa fa-save fa-2x text-white"></i></div>
+            </div>
+            <div class="col-md-auto">
+              <div id="moduleOpen" data-toggle="modal" data-target="#openModuleModal"><i class="fa fa-folder-open fa-2x text-white"></i></div>
             </div>
           </div>
         </div>

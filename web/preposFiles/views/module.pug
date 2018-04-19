@@ -65,10 +65,26 @@ html(lang='en', dir='ltr')
           .modal-footer
             button.btn.btn-primary#saveModuleBtn(type='button', data-dismiss="modal") Save
             button.btn.btn-warning#cancelSaveModuleBtn(type='button', data-dismiss="modal") Cancel
-          
+    #openModuleModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='openModuleModalLabel', aria-hidden='true')
+      .modal-dialog(role='document')
+        .modal-content
+          .modal-header 
+            h5#openModuleModalLabel.modal-title Open Saved Modules Settings
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') ×
+          .modal-body 
+            p Open Module Settings
+            br
+            
+            h3 Contents of the file:
+            pre#file-content
+          .modal-footer
+            input#file-input(type='file')
+            button.btn.btn-warning#cancelOpenModuleBtn(type='button', data-dismiss="modal") Cancel
+                
     .container
       .row
-        .col-6
+        .col-8
           .row
             .col-md-auto
               h1.display-3.text-light Modules
@@ -78,4 +94,7 @@ html(lang='en', dir='ltr')
             .col-md-auto
               #moduleSave(data-toggle="modal" data-target="#saveModuleModal")
                 i.fa.fa-save.fa-2x.text-white
+            .col-md-auto
+              #moduleOpen(data-toggle="modal" data-target="#openModuleModal")
+                i.fa.fa-folder-open.fa-2x.text-white
       #modules
