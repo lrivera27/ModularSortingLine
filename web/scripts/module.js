@@ -220,7 +220,7 @@ async function createMainModule() {
     '            <div class="col-6" id="moduleIRs">'+
     '              <div class="row justify-content-md-center">'+
     '                <div class="col-md-auto">'+
-    '                  <h5 class="text-center component-label component-label">IR 1</h5>'+
+    '                  <h6 class="text-center component-label component-label">IR 1</h6>'+
     '                </div>'+
     '                <div class="col-md-auto">'+
     '                  <select class="custom-select IR1ino">'+
@@ -233,7 +233,7 @@ async function createMainModule() {
     '              </div><br>'+
     '              <div class="row justify-content-md-center">'+
     '                <div class="col-md-auto">'+
-    '                  <h5 class="text-center component-label">IR 2</h5>'+
+    '                  <h6 class="text-center component-label">IR 2</h6>'+
     '                </div>'+
     '                <div class="col-md-auto">'+
     '                  <select class="custom-select IR2ino">'+
@@ -248,7 +248,7 @@ async function createMainModule() {
     '            <div class="col-6" id="moduleServos">'+
     '              <div class="row justify-content-md-center">'+
     '                <div class="col-md-auto">'+
-    '                  <h5 class="text-center component-label">SERVO 1</h5>'+
+    '                  <h6 class="text-center component-label">SERVO 1</h6>'+
     '                </div>'+
     '                <div class="col-md-auto">'+
     '                  <select class="custom-select Servo1Com">'+
@@ -261,20 +261,20 @@ async function createMainModule() {
     '              </div><br>'+
     '              <div class="row justify-content-md-center">'+
     '                <div class="col-md-auto">'+
-    '                  <h5 class="text-center component-label">SERVO 2</h5>'+
+    '                  <h6 class="text-center component-label">SERVO 2</h6>'+
     '                </div>'+
     '                <div class="col-md-auto">'+
-    '                  <select class="custom-select Servo2Com">'+
+    '                  <select class="custom-select Servo1Com">'+
     '                    <option selected>Arduino</option>'+ selectMenu +
     '                  </select>'+
     '                </div>'+
     '                <div class="col-md-auto">'+
-    '                  <input class="form-control text-center Servo2Pin" type="text" placeholder="Arduino Pin">'+
+    '                  <input class="form-control text-center Servo1Pin" type="text" placeholder="Arduino Pin">'+
     '                </div>'+
     '              </div><br>'+
     '              <div class="row justify-content-md-center">'+
     '                <div class="col-md-auto">'+
-    '                  <h5 class="text-center component-label">SERVO 3</h5>'+
+    '                  <h6 class="text-center component-label">SERVO 3</h6>'+
     '                </div>'+
     '                <div class="col-md-auto">'+
     '                  <select class="custom-select Servo3Com">'+
@@ -325,7 +325,7 @@ async function createSideModule() {
     '            <div class="col-6" id="moduleIRs">'+
     '              <div class="row justify-content-md-center">'+
     '                <div class="col-md-auto">'+
-    '                  <h5 class="text-center component-label">IR 1</h5>'+
+    '                  <h6 class="text-center component-label">IR 1</h6>'+
     '                </div>'+
     '                <div class="col-md-auto">'+
     '                  <select class="custom-select IR1ino">'+
@@ -338,7 +338,7 @@ async function createSideModule() {
     '              </div><br>'+
     '              <div class="row justify-content-md-center">'+
     '                <div class="col-md-auto">'+
-    '                  <h5 class="text-center component-label">IR 2</h5>'+
+    '                  <h6 class="text-center component-label">IR 2</h6>'+
     '                </div>'+
     '                <div class="col-md-auto">'+
     '                  <select class="custom-select IR2ino">'+
@@ -353,7 +353,7 @@ async function createSideModule() {
     '            <div class="col-6" id="moduleServos">'+
     '              <div class="row justify-content-md-center">'+
     '                <div class="col-md-auto">'+
-    '                  <h5 class="text-center component-label">SERVO 1</h5>'+
+    '                  <h6 class="text-center component-label">SERVO 1</h6>'+
     '                </div>'+
     '                <div class="col-md-auto">'+
     '                  <select class="custom-select Servo1Com">'+
@@ -405,7 +405,7 @@ async function setOpenModules(modules){
       '            <div class="col-6" id="moduleIRs">'+
       '              <div class="row justify-content-md-center">'+
       '                <div class="col-md-auto">'+
-      '                  <h5 class="text-center component-label component-label">IR 1</h5>'+
+      '                  <h6 class="text-center component-label component-label">IR 1</h6>'+
       '                </div>'+
       '                <div class="col-md-auto">'+
       '                  <select class="custom-select IR1ino">'+
@@ -418,7 +418,7 @@ async function setOpenModules(modules){
       '              </div><br>'+
       '              <div class="row justify-content-md-center">'+
       '                <div class="col-md-auto">'+
-      '                  <h5 class="text-center component-label">IR 2</h5>'+
+      '                  <h6 class="text-center component-label">IR 2</h6>'+
       '                </div>'+
       '                <div class="col-md-auto">'+
       '                  <select class="custom-select IR2ino">'+
@@ -433,7 +433,7 @@ async function setOpenModules(modules){
       '            <div class="col-6" id="moduleServos">'+
       '              <div class="row justify-content-md-center">'+
       '                <div class="col-md-auto">'+
-      '                  <h5 class="text-center component-label">SERVO 1</h5>'+
+      '                  <h6 class="text-center component-label">SERVO 1</h6>'+
       '                </div>'+
       '                <div class="col-md-auto">'+
       '                  <select class="custom-select Servo1Com">'+
@@ -446,7 +446,7 @@ async function setOpenModules(modules){
       '              </div><br>'+
       '              <div class="row justify-content-md-center">'+
       '                <div class="col-md-auto">'+
-      '                  <h5 class="text-center component-label">SERVO 2</h5>'+
+      '                  <h6 class="text-center component-label">SERVO 2</h6>'+
       '                </div>'+
       '                <div class="col-md-auto">'+
       '                  <select class="custom-select Servo2Com">'+
@@ -459,7 +459,7 @@ async function setOpenModules(modules){
       '              </div><br>'+
       '              <div class="row justify-content-md-center">'+
       '                <div class="col-md-auto">'+
-      '                  <h5 class="text-center component-label">SERVO 3</h5>'+
+      '                  <h6 class="text-center component-label">SERVO 3</h6>'+
       '                </div>'+
       '                <div class="col-md-auto">'+
       '                  <select class="custom-select Servo3Com">'+
@@ -497,7 +497,7 @@ async function setOpenModules(modules){
       '            <div class="col-6" id="moduleIRs">'+
       '              <div class="row justify-content-md-center">'+
       '                <div class="col-md-auto">'+
-      '                  <h5 class="text-center component-label">IR 1</h5>'+
+      '                  <h6 class="text-center component-label">IR 1</h6>'+
       '                </div>'+
       '                <div class="col-md-auto">'+
       '                  <select class="custom-select IR1ino">'+
@@ -510,7 +510,7 @@ async function setOpenModules(modules){
       '              </div><br>'+
       '              <div class="row justify-content-md-center">'+
       '                <div class="col-md-auto">'+
-      '                  <h5 class="text-center component-label">IR 2</h5>'+
+      '                  <h6 class="text-center component-label">IR 2</h6>'+
       '                </div>'+
       '                <div class="col-md-auto">'+
       '                  <select class="custom-select IR2ino">'+
@@ -525,7 +525,7 @@ async function setOpenModules(modules){
       '            <div class="col-6" id="moduleServos">'+
       '              <div class="row justify-content-md-center">'+
       '                <div class="col-md-auto">'+
-      '                  <h5 class="text-center component-label">SERVO 1</h5>'+
+      '                  <h6 class="text-center component-label">SERVO 1</h6>'+
       '                </div>'+
       '                <div class="col-md-auto">'+
       '                  <select class="custom-select Servo1Com">'+
