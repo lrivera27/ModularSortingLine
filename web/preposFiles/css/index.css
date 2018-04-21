@@ -37,11 +37,25 @@ body {
   margin-top: 5px;
 }
 
-#module {
+.module {
   background-color: #EEEEEE;
   padding: 20px;
 }
 
 .component-label {
   margin-top: 3px;
+}
+
+#modulePlus,
+#moduleSave,
+#moduleOpen {
+  margin-top: 35px;
+}
+
+#input-button {
+  position: abosulte;
+  width: 1px;
+  height: 1px;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
 }

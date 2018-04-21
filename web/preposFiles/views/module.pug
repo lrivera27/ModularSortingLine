@@ -7,6 +7,9 @@ html(lang='en', dir='ltr')
     
     // CDN Libraries
     
+    // Jquery
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+    
     // Bootstrap CSS
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm', crossorigin='anonymous')
     
@@ -14,10 +17,9 @@ html(lang='en', dir='ltr')
     script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js', integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN', crossorigin='anonymous')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js', integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q', crossorigin='anonymous')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl', crossorigin='anonymous')
-    // 
     
-    // Jquery
-    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+    // Font Awesome 
+    script(defer='', src='https://use.fontawesome.com/releases/v5.0.9/js/all.js', integrity='sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl', crossorigin='anonymous')
     // 
     
     // Let browser know website is optimized for mobile
@@ -32,132 +34,67 @@ html(lang='en', dir='ltr')
     title Configure Modules
   body
   
+  
+    // Modal (this should be hidden)
+    #moduleModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='moduleModalLabel', aria-hidden='true')
+      .modal-dialog(role='document')
+        .modal-content
+          .modal-header
+            h5#moduleModalLabel.modal-title Pick a module type
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') ×
+          .modal-body
+            p Main module: This module is where the camera is suposed to be, it has three servos.
+            br
+            P Side module: This module is any other extra module, this only has two servos.
+          .modal-footer
+            button.btn.btn-primary#mainModuleButton(type='button', data-dismiss="modal") Main Module
+            button.btn.btn-warning#sideModuleButton(type='button', data-dismiss="modal") Side Module
+            
+    // Modal (this should be hidden)
+    #saveModuleModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='saveModuleModalLabel', aria-hidden='true')
+      .modal-dialog(role='document')
+        .modal-content
+          .modal-header
+            h5#saveModuleModalLabel.modal-title Are you Sure?
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') ×
+          .modal-body 
+            p Save Modules
+            br
+          .modal-footer
+            button.btn.btn-primary#saveModuleBtn(type='button', data-dismiss="modal") Save
+            button.btn.btn-warning#cancelSaveModuleBtn(type='button', data-dismiss="modal") Cancel
+    #openModuleModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='openModuleModalLabel', aria-hidden='true')
+      .modal-dialog(role='document')
+        .modal-content
+          .modal-header 
+            h5#openModuleModalLabel.modal-title Open Saved Modules Settings
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') ×
+          .modal-body 
+            p Open Module Settings
+            br
+            
+            h3 Contents of the file:
+            pre#file-content
+          .modal-footer
+            input#file-input(type='file')
+            button.btn.btn-warning#cancelOpenModuleBtn(type='button', data-dismiss="modal") Cancel
+                
     .container
       .row
-        .col-4
+        .col-8
           .row
-            .col-4
+            .col-md-auto
               h1.display-3.text-light Modules
-        
-      #module
-        .row#moduleTile
-          .col-12#moduleType
-            h4.text-center Main Module
-            hr
-            
-        .row
-          .col-6#moduleIRs
-            .row.justify-content-md-center
-              .col-md-auto
-                h5.text-center.component-label.component-label IR 1
-              .col-md-auto
-                select.custom-select
-                  option(selected) Arduino
-                  option(value="1") Mega (COM4)
-                  option(value="2") UNO (COM5)
-              .col-md-auto
-                input(type="text" placeholder="Arduino Pin").form-control.text-center
-            
-            br
-            .row.justify-content-md-center
-              .col-md-auto
-                h5.text-center.component-label IR 2
-              .col-md-auto
-                select.custom-select
-                  option(selected) Arduino
-                  option(value="1") Mega (COM4)
-                  option(value="2") UNO (COM5)
-              .col-md-auto
-                input(type="text" placeholder="Arduino Pin").form-control.text-center
-                
-          .col-6#moduleServos
-            .row.justify-content-md-center
-              .col-md-auto
-                h5.text-center.component-label SERVO 1
-              .col-md-auto
-                select.custom-select
-                  option(selected) Arduino
-                  option(value="1") Mega (COM4)
-                  option(value="2") UNO (COM5)
-
-              .col-md-auto
-                input(type="text" placeholder="Arduino Pin").form-control.text-center
-                
-            br    
-            .row.justify-content-md-center
-              .col-md-auto
-                h5.text-center.component-label SERVO 2
-              .col-md-auto
-                select.custom-select
-                  option(selected) Arduino
-                  option(value="1") Mega (COM4)
-                  option(value="2") UNO (COM5)
-              .col-md-auto
-                input(type="text" placeholder="Arduino Pin").form-control.text-center
-            br    
-            .row.justify-content-md-center
-              .col-md-auto
-                h5.text-center.component-label SERVO 3
-              .col-md-auto
-                select.custom-select
-                  option(selected) Arduino
-                  option(value="1") Mega (COM4)
-                  option(value="2") UNO (COM5)
-              .col-md-auto
-                input(type="text" placeholder="Arduino Pin").form-control.text-center
-                
-                
-      br        
-      #module
-        .row#moduleTile
-          .col-12#moduleType
-            h4.text-center Regular Module
-            hr
-            
-        .row
-          .col-6#moduleIRs
-            .row.justify-content-md-center
-              .col-md-auto
-                h5.text-center.component-label IR 1
-              .col-md-auto
-                select.custom-select
-                  option(selected) Arduino
-                  option(value="1") Mega (COM4)
-                  option(value="2") UNO (COM5)
-              .col-md-auto
-                input(type="text" placeholder="Arduino Pin").form-control.text-center
-            br
-            .row.justify-content-md-center
-              .col-md-auto
-                h5.text-center.component-label IR 2
-              .col-md-auto
-                select.custom-select
-                  option(selected) Arduino
-                  option(value="1") Mega (COM4)
-                  option(value="2") UNO (COM5)
-              .col-md-auto
-                input(type="text" placeholder="Arduino Pin").form-control.text-center
-                
-          .col-6#moduleServos
-            .row.justify-content-md-center
-              .col-md-auto
-                h5.text-center.component-label SERVO 1
-              .col-md-auto
-                select.custom-select
-                  option(selected) Arduino
-                  option(value="1") Mega (COM4)
-                  option(value="2") UNO (COM5)
-              .col-md-auto
-                input(type="text" placeholder="Arduino Pin").form-control.text-center
-                
-            br  
-            .row.justify-content-md-center
-              .col-md-auto
-                h5.text-center.component-label SERVO 2
-              .col-md-auto
-                select.custom-select
-                  option(selected) Arduino
-                  option(value="1") Mega (COM4)
-                  option(value="2") UNO (COM5)
-              .col-md-auto
-                input(type="text" placeholder="Arduino Pin").form-control.text-center
+            .col-md-auto
+              #modulePlus(data-toggle="modal" data-target="#moduleModal")
+                i.fas.fa-plus.fa-2x.text-white
+            .col-md-auto
+              #moduleSave(data-toggle="modal" data-target="#saveModuleModal")
+                i.fa.fa-save.fa-2x.text-white
+            .col-md-auto
+              #moduleOpen(data-toggle="modal" data-target="#openModuleModal")
+                i.fa.fa-folder-open.fa-2x.text-white
+      #modules

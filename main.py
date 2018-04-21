@@ -50,6 +50,10 @@ def typeOfPort(port):
 
     return -1
 
+
+
+
+
 def main():
     print("Loading Arduinos....")
     loadArduinos()
