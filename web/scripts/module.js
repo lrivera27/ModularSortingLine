@@ -264,12 +264,12 @@ async function createMainModule() {
     '                  <h6 class="text-center component-label">SERVO 2</h6>'+
     '                </div>'+
     '                <div class="col-md-auto">'+
-    '                  <select class="custom-select Servo1Com">'+
+    '                  <select class="custom-select Servo2Com">'+
     '                    <option selected>Arduino</option>'+ selectMenu +
     '                  </select>'+
     '                </div>'+
     '                <div class="col-md-auto">'+
-    '                  <input class="form-control text-center Servo1Pin" type="text" placeholder="Arduino Pin">'+
+    '                  <input class="form-control text-center Servo2Pin" type="text" placeholder="Arduino Pin">'+
     '                </div>'+
     '              </div><br>'+
     '              <div class="row justify-content-md-center">'+
