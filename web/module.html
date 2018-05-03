@@ -31,7 +31,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="moduleModalLabel">Pick a module type</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">X</span></button>
           </div>
           <div class="modal-body">
             <p>Main module: This module is where the camera is suposed to be, it has three servos.</p><br>
@@ -50,7 +50,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="saveModuleModalLabel">Are you Sure?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">X</span></button>
           </div>
           <div class="modal-body"> 
             <p>Save Modules</p><br>
@@ -67,7 +67,7 @@
         <div class="modal-content">
           <div class="modal-header"> 
             <h5 class="modal-title" id="openModuleModalLabel">Open Saved Modules Settings</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">X</span></button>
           </div>
           <div class="modal-body"> 
             <p>Open Module Settings</p><br>
@@ -77,6 +77,190 @@
           <div class="modal-footer">
             <input id="file-input" type="file">
             <button class="btn btn-warning" id="cancelOpenModuleBtn" type="button" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="classificationSideModuleModal" tabindex="-1" role="dialog" aria-labelledby="moduleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="moduleModalLabel">Classification Settings</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">X</span></button>
+          </div>
+          <div class="modal-body">
+            <div class="col-md-12 text-center">
+              <h5>Side Module</h5>
+              <!--Door #1 Settings-->
+              <div class="row modal-div">
+                <div class="col-md-12">
+                  <h6>Main Door #1</h6>
+                </div>
+              </div>
+              <div class="row modal-div">
+                <div class="col-md-3">
+                  <h6>Right</h6>
+                </div>
+                <div class="col-md-8">
+                  <select class="select form-control input-lg" id="colorSelect" form="shapeSelect" name="Door1RightColor">
+                    <option value="0" selected>-- Select --</option>
+                    <option value="1">Red</option>
+                    <option value="2">Blue</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row modal-div">
+                <div class="col-md-3">
+                  <h6>Left</h6>
+                </div>
+                <div class="col-md-8">
+                  <select class="select form-control input-lg" id="colorSelect" form="shapeSelect" name="Door1LeftColor">
+                    <option value="0" selected>-- Select --</option>
+                    <option value="1">Red</option>
+                    <option value="2">Blue</option>
+                  </select>
+                </div>
+              </div>
+              <!--Door #2 Settings-->
+              <div class="row modal-div">
+                <div class="col-md-12">
+                  <h6>Main Door #2</h6>
+                </div>
+              </div>
+              <div class="row modal-div">
+                <div class="col-md-3">
+                  <h6>Right</h6>
+                </div>
+                <div class="col-md-8">
+                  <select class="select form-control input-lg" id="colorSelect" form="shapeSelect" name="Door2RightColor">
+                    <option value="0" selected>-- Select --</option>
+                    <option value="1">Red</option>
+                    <option value="2">Blue</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row modal-div">
+                <div class="col-md-3">
+                  <h6>Left</h6>
+                </div>
+                <div class="col-md-8">
+                  <select class="select form-control input-lg" id="colorSelect" form="shapeSelect" name="Door2LeftColor">
+                    <option value="0" selected>-- Select --</option>
+                    <option value="1">Red</option>
+                    <option value="2">Blue</option>
+                  </select>
+                </div>
+              </div>
+              <!--Door #3 Settings-->
+              <div class="row modal-div">
+                <div class="col-md-12">
+                  <h6>Main Door #3</h6>
+                </div>
+              </div>
+              <div class="row modal-div">
+                <div class="col-md-3">
+                  <h6>Right</h6>
+                </div>
+                <div class="col-md-8">
+                  <select class="select form-control input-lg" id="colorSelect" form="shapeSelect" name="Door3RightColor">
+                    <option value="0" selected>-- Select --</option>
+                    <option value="1">Red</option>
+                    <option value="2">Blue</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row modal-div">
+                <div class="col-md-3">
+                  <h6>Left</h6>
+                </div>
+                <div class="col-md-8">
+                  <select class="select form-control input-lg" id="colorSelect" form="shapeSelect" name="Door3LeftColor">
+                    <option value="0" selected>-- Select --</option>
+                    <option value="1">Red</option>
+                    <option value="2">Blue</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-warning" id="closeColorModal" type="button" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal (this should be hidden)-->
+    <div class="modal fade" id="classificationMainModuleModal" tabindex="-1" role="dialog" aria-labelledby="moduleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="moduleModalLabel">Classification Settings</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">X</span></button>
+          </div>
+          <div class="modal-body">
+            <div class="col-md-12 text-center">
+              <h5>Main Module</h5>
+              <!--Door #1 Settings-->
+              <div class="row modal-div">
+                <div class="col-md-12">
+                  <h6>Door #1</h6>
+                </div>
+              </div>
+              <div class="row modal-div">
+                <div class="col-md-3">
+                  <h6>Choose</h6>
+                </div>
+                <div class="col-md-8">
+                  <select class="select form-control input-lg" id="shapeSelect" form="shapeSelect" name="Door1Shape">
+                    <option value="0" selected>-- Select --</option>
+                    <option value="1">Cube</option>
+                    <option value="2">Cylinder</option>
+                    <option value="3">Triangle</option>
+                  </select>
+                </div>
+              </div>
+              <!--Door #2 Settings-->
+              <div class="row modal-div">
+                <div class="col-md-12">
+                  <h6>Door #2</h6>
+                </div>
+              </div>
+              <div class="row modal-div">
+                <div class="col-md-3">
+                  <h6>Choose</h6>
+                </div>
+                <div class="col-md-8">
+                  <select class="select form-control input-lg" id="shapeSelect" form="shapeSelect" name="Door2Shape">
+                    <option value="0" selected>-- Select --</option>
+                    <option value="1">Cube</option>
+                    <option value="2">Cylinder</option>
+                    <option value="3">Triangle</option>
+                  </select>
+                </div>
+              </div>
+              <!--Door #3 Settings-->
+              <div class="row modal-div">
+                <div class="col-md-12">
+                  <h6>Door #3</h6>
+                </div>
+              </div>
+              <div class="row modal-div">
+                <div class="col-md-3">
+                  <h6>Choose</h6>
+                </div>
+                <div class="col-md-8">
+                  <select class="select form-control input-lg" id="shapeSelect" form="shapeSelect" name="Door3Shape">
+                    <option value="0" selected>-- Select --</option>
+                    <option value="1">Cube</option>
+                    <option value="2">Cylinder</option>
+                    <option value="3">Triangle</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-warning" id="closeColorModal" type="button" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>

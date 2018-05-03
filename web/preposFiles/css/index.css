@@ -63,3 +63,12 @@ body {
 .pointer {
   cursor: pointer;
 }
+
+.modal-div{
+    align-content:space-between;
+    margin-bottom: 10px;
+}
+
+#openClassification{
+  margin-top:15px;
+}

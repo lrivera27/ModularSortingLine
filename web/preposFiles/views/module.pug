@@ -42,7 +42,7 @@ html(lang='en', dir='ltr')
           .modal-header
             h5#moduleModalLabel.modal-title Pick a module type
             button.close(type='button', data-dismiss='modal', aria-label='Close')
-              span(aria-hidden='true') ×
+              span(aria-hidden='true') X
           .modal-body
             p Main module: This module is where the camera is suposed to be, it has three servos.
             br
@@ -58,7 +58,7 @@ html(lang='en', dir='ltr')
           .modal-header
             h5#saveModuleModalLabel.modal-title Are you Sure?
             button.close(type='button', data-dismiss='modal', aria-label='Close')
-              span(aria-hidden='true') ×
+              span(aria-hidden='true') X
           .modal-body 
             p Save Modules
             br
@@ -71,7 +71,7 @@ html(lang='en', dir='ltr')
           .modal-header 
             h5#openModuleModalLabel.modal-title Open Saved Modules Settings
             button.close(type='button', data-dismiss='modal', aria-label='Close')
-              span(aria-hidden='true') ×
+              span(aria-hidden='true') X
           .modal-body 
             p Open Module Settings
             br
@@ -82,6 +82,136 @@ html(lang='en', dir='ltr')
             input#file-input(type='file')
             button.btn.btn-warning#cancelOpenModuleBtn(type='button', data-dismiss="modal") Cancel
                 
+                
+                
+    #classificationSideModuleModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='moduleModalLabel', aria-hidden='true')
+      .modal-dialog(role='document')
+        .modal-content
+          .modal-header
+            h5#moduleModalLabel.modal-title Classification Settings
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') X
+          .modal-body
+            .col-md-12.text-center
+              h5 Side Module
+              //Door #1 Settings
+              .row.modal-div
+                .col-md-12
+                  h6 Main Door #1
+              .row.modal-div
+                .col-md-3
+                  h6 Right
+                .col-md-8
+                  select#colorSelect.select.form-control.input-lg(form='shapeSelect', name='Door1RightColor')
+                    option(value='0', selected = true) -- Select --
+                    option(value='1') Red
+                    option(value='2') Blue
+              .row.modal-div
+                .col-md-3
+                  h6 Left
+                .col-md-8
+                  select#colorSelect.select.form-control.input-lg(form='shapeSelect', name='Door1LeftColor')
+                    option(value='0', selected = true) -- Select --
+                    option(value='1') Red
+                    option(value='2') Blue
+              //Door #2 Settings
+              .row.modal-div
+                .col-md-12
+                  h6 Main Door #2
+              .row.modal-div
+                .col-md-3
+                  h6 Right
+                .col-md-8
+                  select#colorSelect.select.form-control.input-lg(form='shapeSelect', name='Door2RightColor')
+                    option(value='0', selected = true) -- Select --
+                    option(value='1') Red
+                    option(value='2') Blue
+              .row.modal-div
+                .col-md-3
+                  h6 Left
+                .col-md-8
+                  select#colorSelect.select.form-control.input-lg(form='shapeSelect', name='Door2LeftColor')
+                    option(value='0', selected = true) -- Select --
+                    option(value='1') Red
+                    option(value='2') Blue
+              //Door #3 Settings
+              .row.modal-div
+                .col-md-12
+                  h6 Main Door #3
+              .row.modal-div
+                .col-md-3
+                  h6 Right
+                .col-md-8
+                  select#colorSelect.select.form-control.input-lg(form='shapeSelect', name='Door3RightColor')
+                    option(value='0', selected = true) -- Select --
+                    option(value='1') Red
+                    option(value='2') Blue
+              .row.modal-div
+                .col-md-3
+                  h6 Left
+                .col-md-8
+                  select#colorSelect.select.form-control.input-lg(form='shapeSelect', name='Door3LeftColor')
+                    option(value='0', selected = true) -- Select --
+                    option(value='1') Red
+                    option(value='2') Blue
+          .modal-footer
+            button.btn.btn-warning#closeColorModal(type='button', data-dismiss="modal") Close
+            
+            
+            
+            
+    // Modal (this should be hidden)
+    #classificationMainModuleModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='moduleModalLabel', aria-hidden='true')
+      .modal-dialog(role='document')
+        .modal-content
+          .modal-header
+            h5#moduleModalLabel.modal-title Classification Settings
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') X
+          .modal-body
+            .col-md-12.text-center
+              h5 Main Module
+              //Door #1 Settings
+              .row.modal-div
+                .col-md-12
+                  h6 Door #1
+              .row.modal-div
+                .col-md-3
+                  h6 Choose
+                .col-md-8
+                  select#shapeSelect.select.form-control.input-lg(form='shapeSelect', name='Door1Shape')
+                    option(value='0', selected = true) -- Select --
+                    option(value='1') Cube
+                    option(value='2') Cylinder
+                    option(value='3') Triangle
+              //Door #2 Settings
+              .row.modal-div
+                .col-md-12
+                  h6 Door #2
+              .row.modal-div
+                .col-md-3
+                  h6 Choose
+                .col-md-8
+                  select#shapeSelect.select.form-control.input-lg(form='shapeSelect', name='Door2Shape')
+                    option(value='0', selected = true) -- Select --
+                    option(value='1') Cube
+                    option(value='2') Cylinder
+                    option(value='3') Triangle
+              //Door #3 Settings
+              .row.modal-div
+                .col-md-12
+                  h6 Door #3
+              .row.modal-div
+                .col-md-3
+                  h6 Choose
+                .col-md-8
+                  select#shapeSelect.select.form-control.input-lg(form='shapeSelect', name='Door3Shape')
+                    option(value='0', selected = true) -- Select --
+                    option(value='1') Cube
+                    option(value='2') Cylinder
+                    option(value='3') Triangle
+          .modal-footer
+            button.btn.btn-warning#closeColorModal(type='button', data-dismiss="modal") Close
     .container
       .row
         .col-8
