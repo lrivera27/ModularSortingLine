@@ -59,3 +59,7 @@ body {
   clip: rect(1px 1px 1px 1px);
   clip: rect(1px, 1px, 1px, 1px);
 }
+
+.pointer {
+  cursor: pointer;
+}
