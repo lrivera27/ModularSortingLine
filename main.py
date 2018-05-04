@@ -61,7 +61,7 @@ def main():
 
     eel.init("web")
     print("Starting up GUI....")
-    eel.start("module.html", size=(1280, 720))
+    eel.start("login.html", size=(1280, 720))
 
 
 if __name__ == "__main__":
