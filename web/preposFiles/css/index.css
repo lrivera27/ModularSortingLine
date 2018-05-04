@@ -45,7 +45,7 @@ body {
 .component-label {
   margin-top: 3px;
 }
-
+#startButton,
 #modulePlus,
 #moduleSave,
 #moduleOpen {
